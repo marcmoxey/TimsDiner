@@ -3,6 +3,7 @@ using DataLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVCDemoApp.Models;
+using System.Diagnostics;
 
 namespace MVCDemoApp.Controllers
 {
@@ -48,11 +49,30 @@ namespace MVCDemoApp.Controllers
 
             var food = await _foodData.GetFoods();
 
-            order.Total = order.Quantity * food.Where(x => x.Id == order.FoodId).First().Price;
+            order.Total = order.Quantity * food.Where(x => x.Id == order.FoodId).FirstOrDefault().Price;
 
             int id = await _orderData.CreateOrder(order);
 
-            return RedirectToAction("Create");
+            return RedirectToAction("Display", new { id});
+        }
+
+
+        public async Task<IActionResult> Display(int id)
+        {
+            OrderDisplayModel displayOrder = new OrderDisplayModel();
+
+            displayOrder.Order = await _orderData.GetOrderById(id);
+            
+            if (displayOrder.Order != null)
+            {
+                var food = await _foodData.GetFoods();
+
+              
+                displayOrder.ItemPurchased = food.Where(x => x.Id == displayOrder.Order.FoodId).FirstOrDefault()?.Title;
+
+            }
+
+            return View(displayOrder);
         }
     }
 }

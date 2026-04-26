@@ -2,7 +2,7 @@ using DataLibrary.Data;
 using DataLibrary.Db;
 
 var builder = WebApplication.CreateBuilder(args);
-
+Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton(new ConnectionStringData
