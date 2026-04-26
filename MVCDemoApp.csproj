@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>9d1a0ae0-e2e3-48e9-bbb7-06005307cc1e</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+            <PackageReference Include="Dapper" Version="2.1.72" />
+            <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
+            <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
+            <PackageReference Include="Npgsql" Version="10.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="DataLibrary">
+        <HintPath>..\AspNetCoreCommon\DataLibrary\bin\Release\net8.0\DataLibrary.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+
+
+</Project>
