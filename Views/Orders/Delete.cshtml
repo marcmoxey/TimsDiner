@@ -1,0 +1,19 @@
+﻿@model DataLibrary.Models.OrderModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+@if(Model is null)
+{
+    <h4>The request record was not found </h4>
+} else
+{
+    <div class="h4">
+        Are you sure you want to delete the order you place on @Model.OrderDate
+    </div>
+    <form asp-action="Delete">
+            <input type="submit" value="Delete" class="btn btn-primary"/>
+    </form>
+}
+
